@@ -35,4 +35,8 @@ class Product < ActiveRecord::Base
       end
     end
   end
+
+  def first_image
+    images.first.present? ? images.first.file.url : 'No Image'
+  end
 end

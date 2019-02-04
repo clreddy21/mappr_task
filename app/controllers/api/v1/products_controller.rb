@@ -12,10 +12,6 @@ class API::V1::ProductsController < ApplicationController
     end
   end
 
-  def edit
-
-  end
-
   def update
     if @product.update!(product_params)
       Products::Update.run!(@product, params, product_params)

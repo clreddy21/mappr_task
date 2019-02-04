@@ -66,3 +66,5 @@ end
 
 
 gem "paperclip"
+gem "haml-rails", "~> 1.0"
+gem 'bootstrap'

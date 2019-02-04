@@ -1,0 +1,38 @@
+.row
+  .col-md-2
+  .col-md-10
+    %h3
+      = 'List of Products'
+.row
+  .col-md-1
+  .col-md-10
+    %table#products
+      %caption
+        = 'List of Products'
+      %thead
+        %tr
+          %th
+            = 'Index'
+          %th
+            = 'Name'
+          %th
+            = 'SKU ID'
+          %th
+            = 'Price'
+          %th
+            = 'First Image'
+      %tbody.text-center
+        - @products.each_with_index do |product, i|
+          %tr
+            %td
+              = i + 1
+            %td
+              %a{href: admin_product_path(product)}
+                = product.name
+            %td
+              = product.sku_id
+            %td
+              = product.price
+            %td
+              = image_tag product.first_image
+

@@ -7,9 +7,9 @@ module Products::Update
   private
 
   def self.build(product, params, product_params)
-    update_tags(product, params[:tags])
-    update_categories(product, params[:categories])
-    update_images(product, product_params, params)
+    update_tags(product, params[:tags]) unless params[:tags].blank?
+    update_categories(product, params[:categories]) unless params[:categories].blank?
+    update_images(product, product_params, params) unless params[:images].nil?
   end
 
   def self.update_tags(product, tags)

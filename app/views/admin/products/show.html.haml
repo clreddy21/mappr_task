@@ -1,0 +1,25 @@
+.row
+  .col-md-2
+  .col-md-10
+    %h3
+      = 'Product Details'
+.row
+  .col-md-1
+  .col-md-10
+    #product
+      = form_for :@product, url: admin_product_path, method: 'put' do |f|
+        = f.label :name
+        = f.text_field :name, :value => @product.name
+        %br
+        = f.label :sku_id
+        = f.text_field :sku_id, :value => @product.sku_id
+        %br
+        = f.label :price
+        = f.text_field :price, :value => @product.price
+        %br
+        = f.label :expire_date
+        = f.date_field :expire_date, :value => @product.expire_date
+        %br
+        = f.submit 'Update'
+
+
