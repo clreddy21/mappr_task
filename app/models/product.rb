@@ -25,12 +25,14 @@ class Product < ActiveRecord::Base
     end
   end
 
-  private
 
-  # def parse_image
-  #   image = Paperclip.io_adapters.for(image_base)
-  #   image.original_filename = image_name.present? ? image_name : "#{Product.name}_image_#{Time.now}"
-  #   self.picture = image
-  # end
-
+  def update_attachments(params)
+    params.each do |param|
+      if (param[:id]).nil?
+        self.images.create!(:file_contents => param[:image_data])
+      else
+        self.images.find(param[:id]).update(:file_contents => param[:image_data])
+      end
+    end
+  end
 end

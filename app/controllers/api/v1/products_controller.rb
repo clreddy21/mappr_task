@@ -17,7 +17,12 @@ class API::V1::ProductsController < ApplicationController
   end
 
   def update
-    @product.update(product_params)
+    if @product.update!(product_params)
+      Products::Update.run!(@product, params, product_params)
+      json_response(@product, :created)
+    else
+      json_response(@product.errors.full_messages.join(','), :'500')
+    end
     head :no_content
   end
 
